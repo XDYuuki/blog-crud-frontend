@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/head.ejs") %>
+        <link rel="stylesheet" href="/styles/home.css">
+</head>
+
+<body>
+    <%- include("../partials/header.ejs") %>
+        <main>
+
+            <form name="form-post" method="POST" action="/new-post" class="post-form">
+                <div class="input">
+                    <label for="title">Title: </label>
+                    <input type="text" name="title">
+                </div>
+                <div class="input">
+                    <textarea name="content" id="" cols="30" rows="4"></textarea>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+
+            <% if (posts) {%>
+                <% posts.forEach(post=> {%>
+
+                    <div class="card" id="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <span>
+                                    <%= post.id %>.
+                                </span>
+                                <%= post.title %>
+                            </h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">
+                                Author: <%= post.author_id %>. <%= post.autorName %>
+                            </h6>
+                            <p class="card-text">
+                                <%= post.content %>
+                            </p>
+                            <button class="btn btn-primary" id="<%= post.id %>"
+                                onclick="updatePost(event)">Edit</button>
+                            <button class="btn btn-primary" id="<%= post.id %>"
+                                onclick="deletePost(event)">Delete</button>
+                        </div>
+                    </div>
+                    <% }); %>
+                        <% } %>
+
+        </main>
+        <%- include("../partials/bootstrap.ejs") %>
+            <script>
+                function updatePost(event) {
+                    console.log("ID:", event.srcElement.id);
+
+                }
+                function deletePost(event, title, content) { }                
+            </script>
+</body>
+
+</html>

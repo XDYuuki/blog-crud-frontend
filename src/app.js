@@ -8,8 +8,8 @@ class AppController {
     constructor() {
         this.app = express();
 
-        this.useRouts();
         this.midlewares();
+        this.useRouts();
         this.setUp();
     }
 
@@ -21,6 +21,8 @@ class AppController {
         this.app.use(express.static("public"));
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(bodyParser.json());
+
+        this.app.use(express.static(path.join(__dirname, "public")));
     }
 
     setUp() {

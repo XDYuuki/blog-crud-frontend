@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/head.ejs") %>
+        <link rel="stylesheet" href="/styles/landing.css">
+</head>
+
+<body>
+    <%- include("../partials/headerNotLoggedIn.ejs") %>
+
+        <main>
+            <h2>Login</h2>
+            <form name="form1" method="POST" action="/">
+                <label for="">email:</label>
+                <input type="email" name="email" placeholder="you@contact.com">
+
+                <button type="submit">Login</button>
+            </form>
+        </main>
+
+        <%- include("../partials/bootstrap.ejs") %>
+</body>
+
+</html>
